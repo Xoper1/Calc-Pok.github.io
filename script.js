@@ -1,43 +1,86 @@
-function mostrarLucky() {
-    let elixir = prompt("1 - Elixir | 2 - Sem Elixir");
-    let drop = parseFloat(prompt("Digite a porcentagem de drop"));
+function trocarAba(id){
 
-    let luckys = [0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 1.0, 1.5];
+    document.querySelectorAll(".content")
+    .forEach(c => c.classList.remove("active"));
+
+    document.querySelectorAll(".tab-btn")
+    .forEach(b => b.classList.remove("active"));
+
+    document.getElementById(id)
+    .classList.add("active");
+
+    event.target.classList.add("active");
+}
+
+function mostrarLucky(){
+
+    const elixir =
+    document.getElementById("elixir").value;
+
+    const drop =
+    parseFloat(document.getElementById("dropInput").value);
+
+    const luckys =
+    [0.1,0.2,0.35,0.5,0.65,0.8,1.0,1.5];
 
     let resultado = "";
 
-    for (let i = 0; i < luckys.length; i++) {
-        let lucky = i + 1;
-        let valor = (drop * (1 + luckys[i])).toFixed(2);
+    for(let i=0; i<luckys.length; i++){
 
-        resultado += `Lucky ${lucky}: ${valor}%<br>`;
+        const lucky = i + 1;
+        const valor =
+        (drop * (1 + luckys[i])).toFixed(2);
 
-        if (elixir === "1") {
-            resultado += `Lucky ${lucky} +20%:
-            ${(drop * (1 + luckys[i] + 0.2)).toFixed(2)}%<br>`;
+        resultado += `
+        <div>
+            <strong>Lucky ${lucky}</strong>
+            → ${valor}%
+        </div>`;
 
-            resultado += `Lucky ${lucky} +80%:
-            ${(drop * (1 + luckys[i] + 0.8)).toFixed(2)}%<br><br>`;
+        if(elixir === "1"){
+
+            resultado += `
+            <div>+20%:
+            ${(drop * (1 + luckys[i] + 0.2)).toFixed(2)}%</div>
+
+            <div>+80%:
+            ${(drop * (1 + luckys[i] + 0.8)).toFixed(2)}%</div>
+            <hr>
+            `;
         }
     }
 
-    document.getElementById("resultado").innerHTML = resultado;
+    document.getElementById("resultadoDrop")
+    .innerHTML = resultado;
 }
 
-function mediaBalls() {
-    let elemental = 250;
-    let ub = 130;
+function mediaBalls(){
 
-    let precoPoke = parseInt(prompt("Preço NPC do Pokémon"));
-    let precoElemental = parseInt(prompt("Preço Ball Elemental"));
+    const elemental = 250;
+    const ub = 130;
 
-    let mediaElemental = 2 * (precoPoke / elemental);
-    let mediaUB = 2 * (precoPoke / ub);
+    const precoPoke =
+    parseInt(document.getElementById("precoPoke").value);
 
-    document.getElementById("resultado").innerHTML =
-        `Você precisará de aproximadamente
+    const precoBall =
+    parseInt(document.getElementById("precoBall").value);
+
+    const mediaElemental =
+    2 * (precoPoke / elemental);
+
+    const mediaUB =
+    2 * (precoPoke / ub);
+
+    document.getElementById("resultadoBalls")
+    .innerHTML = `
+        <strong>Resultado:</strong><br><br>
+
         ${Math.ceil(mediaUB)} UB/PB
-        (${Math.ceil((mediaUB * ub)/1000)}k)
-        ou ${Math.ceil(mediaElemental)} Balls Elementais
-        (${Math.ceil((mediaElemental * precoElemental)/1000)}k)`;
+        (${Math.ceil((mediaUB * ub)/1000)}k)<br><br>
+
+        ${Math.ceil(mediaElemental)}
+        Balls Elementais
+
+        (${Math.ceil((mediaElemental * precoBall)/1000)}k)
+    `;
 }
