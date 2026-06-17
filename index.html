@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,68 +8,123 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="background"></div>
+    <div class="background"></div>
 
-<div class="container">
+    <div class="container">
 
-    <div class="logo-area">
-        <h1>⚡ Calc Pok</h1>
-        <p>Calculadora</p>
+        <div class="logo-area">
+            <h1>⚡ Calc Pok</h1>
+            <p>Calculadora PXG</p>
+        </div>
+
+        <div class="card">
+
+            <!-- TABS -->
+            <div class="tabs">
+
+                <button
+                    class="tab-btn active"
+                    onclick="trocarAba(event, 'drop')">
+
+                    Drop Lucky
+                </button>
+
+                <button
+                    class="tab-btn"
+                    onclick="trocarAba(event, 'balls')">
+
+                    Média Balls
+                </button>
+
+            </div>
+
+            <!-- DROP -->
+            <div id="drop" class="content active">
+
+                <label for="dropInput">
+                    Drop (%)
+                </label>
+
+                <input
+                    type="number"
+                    id="dropInput"
+                    placeholder="Ex: 5"
+                    min="0"
+                    step="0.01">
+
+                <label for="elixir">
+                    Elixir
+                </label>
+
+                <select id="elixir">
+                    <option value="2">
+                        Sem Elixir
+                    </option>
+
+                    <option value="1">
+                        Com Elixir
+                    </option>
+                </select>
+
+                <button
+                    class="action-btn"
+                    onclick="mostrarLucky()">
+
+                    Calcular
+                </button>
+
+                <div
+                    id="resultadoDrop"
+                    class="result-box">
+                </div>
+
+            </div>
+
+            <!-- BALLS -->
+            <div id="balls" class="content">
+
+                <label for="precoPoke">
+                    Preço NPC Pokémon
+                </label>
+
+                <input
+                    type="number"
+                    id="precoPoke"
+                    placeholder="Ex: 50000"
+                    min="0">
+
+                <label for="precoBall">
+                    Preço Ball Elemental
+                </label>
+
+                <input
+                    type="number"
+                    id="precoBall"
+                    placeholder="Ex: 3000"
+                    min="0">
+
+                <button
+                    class="action-btn"
+                    onclick="mediaBalls()">
+
+                    Calcular
+                </button>
+
+                <div
+                    id="resultadoBalls"
+                    class="result-box">
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
-    <div class="card">
+    <script src="script.js"></script>
 
-        <div class="tabs">
-            <button class="tab-btn active" onclick="trocarAba('drop')">
-                Drop Lucky
-            </button>
-
-            <button class="tab-btn" onclick="trocarAba('balls')">
-                Média Balls
-            </button>
-        </div>
-
-        <!-- DROP -->
-        <div id="drop" class="content active">
-
-            <label>Drop (%)</label>
-            <input type="number" id="dropInput" placeholder="Ex: 5">
-
-            <label>Elixir</label>
-            <select id="elixir">
-                <option value="2">Sem Elixir</option>
-                <option value="1">Com Elixir</option>
-            </select>
-
-            <button class="action-btn" onclick="mostrarLucky()">
-                Calcular
-            </button>
-
-            <div id="resultadoDrop" class="result-box"></div>
-        </div>
-
-        <!-- BALLS -->
-        <div id="balls" class="content">
-
-            <label>Preço NPC Pokémon</label>
-            <input type="number" id="precoPoke">
-
-            <label>Preço Ball Elemental</label>
-            <input type="number" id="precoBall">
-
-            <button class="action-btn" onclick="mediaBalls()">
-                Calcular
-            </button>
-
-            <div id="resultadoBalls" class="result-box"></div>
-
-        </div>
-
-    </div>
-</div>
-
-<script src="script.js"></script>
 </body>
+
 </html>
