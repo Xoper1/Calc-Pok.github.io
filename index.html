@@ -2,25 +2,73 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Calc Pok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc Pok | PXG</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Calculadora PXG</h1>
+<div class="background"></div>
 
-<button onclick="mostrarLucky()">
-    Chance de Drop por Lucky
-</button>
+<div class="container">
 
-<button onclick="mediaBalls()">
-    Média de Balls
-</button>
+    <div class="logo-area">
+        <h1>⚡ Calc Pok</h1>
+        <p>Calculadora estilo PXG</p>
+    </div>
 
-<hr>
+    <div class="card">
 
-<div id="resultado"></div>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="trocarAba('drop')">
+                Drop Lucky
+            </button>
+
+            <button class="tab-btn" onclick="trocarAba('balls')">
+                Média Balls
+            </button>
+        </div>
+
+        <!-- DROP -->
+        <div id="drop" class="content active">
+
+            <label>Drop (%)</label>
+            <input type="number" id="dropInput" placeholder="Ex: 5">
+
+            <label>Elixir</label>
+            <select id="elixir">
+                <option value="2">Sem Elixir</option>
+                <option value="1">Com Elixir</option>
+            </select>
+
+            <button class="action-btn" onclick="mostrarLucky()">
+                Calcular
+            </button>
+
+            <div id="resultadoDrop" class="result-box"></div>
+        </div>
+
+        <!-- BALLS -->
+        <div id="balls" class="content">
+
+            <label>Preço NPC Pokémon</label>
+            <input type="number" id="precoPoke">
+
+            <label>Preço Ball Elemental</label>
+            <input type="number" id="precoBall">
+
+            <button class="action-btn" onclick="mediaBalls()">
+                Calcular
+            </button>
+
+            <div id="resultadoBalls" class="result-box"></div>
+
+        </div>
+
+    </div>
+</div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
